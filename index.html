@@ -21,9 +21,9 @@
          <ul class="menu-icons">
             <li><i class="bi bi-person"></i></li>
             <li><i class="bi bi-search"></i></li>
-            <li class="basket-icon">
+            <li class="cart-icon">
                 <i class="bi bi-cart"></i>
-                <span class="basket-count">2</span>
+                <span class="cart-count">2</span>
             </li>
          </ul>
     </nav>
@@ -50,17 +50,110 @@
             </button>
           </div>
     </section>
-    <section class="store">
+    <section class="store my-5">
+      <div class="filter-bg"></div>
+      <ul class="filter">
+        <li class="active">Tümü</li>
+        <li>Kişisel Gelişim</li>
+        <li>Edebiyat</li>
+        <li>Ekonomi</li>
+        <li>Çocuk</li>
+        <li>Tarih</li>
+      </ul>
 
         <div class="row ">
 
-           <div class="col-5 offset-2"></div>
-           <div class="col-5"></div>
+           <div class="col-5 offset-2 my-5">
+            <div class="row book-card">
+              <div class="col-6">
+                <img class="img-fluid shadow" src="assets/img/cate1-2.jpg" width="258" height="400" >
+              </div>
+              <div class="col-6 d-flex flex-column justify-content-between">
+                <div class="book-detail">
+                  <span class="book-author font gray fs-5">İlber Ortaylı</span><br>
+                  <span class="book-name fs-4 fw-bold">İnsan Geleceğini Nasıl Kurar</span><br>
+                   <span class="book-star-rate">
+                    <i class="bi bi-star-fill active"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span class="gray">250 reviews</span>
+                   </span>
+                </div>
+                <p class="book-desc font gray">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae necessitatibus quos, a maiores maxime ipsum culpa fuga alias facere ipsa.</p>
+                <div>
+                  <span class="black fw-bold fs-5 me-2">45₺</span>
+                  <span class="gray old-price fs-5 fw-bold">65₺</span>
+                </div>
+                <button class="btn-purple">ADD TO CART</button>
+              </div>
+            </div>
+
+           </div>
+           <div class="col-5 my-5">
+            <div class="row book-card">
+              <div class="col-6">
+                <img class="img-fluid shadow" src="assets/img/cate1-2.jpg" width="258" height="400" >
+              </div>
+              <div class="col-6 d-flex flex-column justify-content-between">
+                <div class="book-detail">
+                  <span class="book-author font gray fs-5">İlber Ortaylı</span><br>
+                  <span class="book-name fs-4 fw-bold">İnsan Geleceğini Nasıl Kurar</span><br>
+                   <span class="book-star-rate">
+                    <i class="bi bi-star-fill active"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span class="gray">250 reviews</span>
+                   </span>
+                </div>
+                <p class="book-desc font gray">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae necessitatibus quos, a maiores maxime ipsum culpa fuga alias facere ipsa.</p>
+                <div>
+                  <span class="black fw-bold fs-5 me-2">45₺</span>
+                  <span class="gray old-price fs-5 fw-bold">65₺</span>
+                </div>
+                <button class="btn-purple">ADD TO CART</button>
+              </div>
+            </div>
+           </div>
+        
+
+
+           
 
         </div>
 
     </section>
 
+    <div class="cart-modal">
+      <div class="cart-items">
+        <i class="bi bi-x"></i>
+        <h2 class="cart-title">Cart</h2>
+        <ul class="cart-list">
+          <li class="cart-item">
+            <img src="assets/img/cate1-2.jpg" alt="">
+            <div class="cart-item-info">
+              <h3 class="book-name">İnsan Geleceğini Nasıl Kurar</h3>
+              <span class="book-price"> 45₺</span><br>
+              <span class="book-remove">remove</span>
+            </div>
+            <div class="book-count">
+              <span class="decrease">-</span>
+              <span class="count">2</span>
+              <span class="increase">+</span>
+            </div>
+          </li>
+        
+        </ul>
+        <div class="cart-total">
+          <span class="fw-bold mb-3 fs-5">Total : 145₺</span>
+          <button class="btn-purple">Checkout</button>
+        </div>
+      </div>
+    </div>
+     
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
