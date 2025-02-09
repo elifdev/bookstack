@@ -21,7 +21,7 @@
          <ul class="menu-icons">
             <li><i class="bi bi-person"></i></li>
             <li><i class="bi bi-search"></i></li>
-            <li class="cart-icon">
+            <li class="cart-icon" onclick="toggleModal();">
                 <i class="bi bi-cart"></i>
                 <span class="cart-count">2</span>
             </li>
@@ -61,7 +61,7 @@
         <li>Tarih</li>
       </ul>
 
-        <div class="row ">
+        <div class="row book-list ">
 
            <div class="col-5 offset-2 my-5">
             <div class="row book-card">
@@ -129,7 +129,7 @@
 
     <div class="cart-modal">
       <div class="cart-items">
-        <i class="bi bi-x"></i>
+        <i class="bi bi-x" onclick="toggleModal();"></i>
         <h2 class="cart-title">Cart</h2>
         <ul class="cart-list">
           <li class="cart-item">
