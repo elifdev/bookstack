@@ -10,7 +10,7 @@
       "reviewCount": 198,
       "stock": 11,
       "imgSource": "assets/img/cate1-1.jpg",
-      "type": "Self-help"
+      "type": "SelfHelp"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "reviewCount": 330,
       "stock": 7,
       "imgSource": "assets/img/cate1-2.jpg",
-      "type": "Self-help"
+      "type": "SelfHelp"
     },
     {
       "id": 3,
@@ -36,7 +36,7 @@
       "reviewCount": 130,
       "stock": 3,
       "imgSource": "assets/img/cate3-3.png",
-      "type": "FINANCE"
+      "type": "Finance"
     },
     {
       "id": 4,
@@ -49,7 +49,7 @@
       "reviewCount": 560,
       "stock": 6,
       "imgSource":  "assets/img/cate1-3.jpg",
-      "type": "Self-help"
+      "type": "SelfHelp"
     },
     {
       "id": 5,
@@ -62,7 +62,7 @@
       "reviewCount": 410,
       "stock": 450,
       "imgSource": "assets/img/cate1-4.png",
-      "type": "Self-help"
+      "type": "SelfHelp"
     },
     {
       "id": 6,
@@ -167,7 +167,7 @@
         "reviewCount": 930,
         "stock": 143,
         "imgSource": "assets/img/cate5-2.png",
-        "type": "Kids"
+        "type":"Kids"
       },
       {
         "id": 13,
@@ -180,6 +180,6 @@
         "reviewCount": 930,
         "stock": 143,
         "imgSource": "assets/img/cate6-3.jpg",
-        "type": "History"
+        "type":"History"
       }
   ]
