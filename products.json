@@ -74,7 +74,7 @@
       "starRate": 4.3,
       "reviewCount": 145,
       "stock": 321,
-      "imgSource":  "assets/img/cate2-1.jpg",
+      "imgSource":  "assets/img/cate1-5.png",
       "type": "Literature"
     },
     {
@@ -87,7 +87,7 @@
       "starRate": 4.3,
       "reviewCount": 173,
       "stock": 73,
-      "imgSource": "assets/img/cate2-2.jpg",
+      "imgSource": "assets/img/cate2-1.jpg",
       "type": "Literature"
     },
   
@@ -101,7 +101,7 @@
       "starRate": 4.3,
       "reviewCount": 189,
       "stock": 89,
-      "imgSource": "assets/img/cate2-3.jpg",
+      "imgSource": "assets/img/cate2-2.jpg",
       "type": "Literature"
     },
     {
@@ -114,7 +114,7 @@
       "starRate": 4.3,
       "reviewCount": 78,
       "stock": 80,
-      "imgSource": "assets/img/cate2-4.jpg",
+      "imgSource": "assets/img/cate2-3.jpg",
       "type": "Literature"
     },
     {
@@ -127,7 +127,7 @@
       "starRate": 4.5,
       "reviewCount": 250,
       "stock": 14,
-      "imgSource": "assets/img/cate2-5.webp",
+      "imgSource": "assets/img/cate2-4.jpg",
       "type": "Literature"
     },
     {
