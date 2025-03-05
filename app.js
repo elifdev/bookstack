@@ -18,7 +18,7 @@ const getBooks = async () => {
         createBookItemsHtml(bookList);
     } catch (error) {
         console.error("Error", error);
-        toastr.error("Kitaplar yüklenemedi. Lütfen daha sonra tekrar deneyin.");
+        toastr.error("Books could not be loaded. Please try again later.");
     }
 };
 
@@ -283,13 +283,13 @@ const login = () => {
         currentUser = user;
         localStorage.setItem('currentUser', JSON.stringify(user));
         
-        toastr.success(`Hoşgeldin, ${user.name}!`);
+        toastr.success(`Hello, ${user.name}!`);
         authModal.classList.remove('show');
         
         updateProfileMenuVisibility();
         toggleProfileModal();
     } else {
-        errorEl.textContent = 'Geçersiz e-posta veya şifre.';
+        errorEl.textContent = 'Invalid email or password.';
     }
 };
 
@@ -298,7 +298,7 @@ const logout = () => {
     currentUser = null;
     localStorage.removeItem('currentUser');
     
-    toastr.info('Çıkış yapıldı.');
+    toastr.info('Exit has been made.');
     updateProfileMenuVisibility();
 };
 
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAddAddress = document.querySelector('.btn-add-address');
     if (btnAddAddress) {
         btnAddAddress.addEventListener('click', () => {
-            toastr.info('Adres ekleme özelliği henüz geliştirilmedi.');
+            toastr.info('under construction');
         });
     }
     
@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnEdit = document.querySelector('.btn-edit');
     if (btnEdit) {
         btnEdit.addEventListener('click', () => {
-            toastr.info('Bilgileri düzenleme özelliği henüz geliştirilmedi.');
+            toastr.info('under construction');
         });
     }
     
