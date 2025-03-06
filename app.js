@@ -9,7 +9,33 @@ const toggleModal = () => {
     cartModal.classList.toggle("active");
 };
 
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('show');
+  }
 
+  
+
+  
+
+
+
+function initializeFilterScroll() {
+  const filter = document.querySelector('.filter');
+  if (window.innerWidth <= 768) {
+    
+    const filterWidth = filter.scrollWidth;
+    const containerWidth = filter.clientWidth;
+    
+    if (filterWidth > containerWidth) {
+      const scrollPosition = (filterWidth - containerWidth) / 2;
+      filter.scrollLeft = scrollPosition;
+    }
+  }
+}
+
+window.addEventListener('load', initializeFilterScroll);
+window.addEventListener('resize', initializeFilterScroll);
 const getBooks = async () => {
     try {
         const res = await fetch("./products.json");

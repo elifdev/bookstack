@@ -23,6 +23,9 @@
       <li>GIFTS</li>
       <li>ABOUT</li>
     </ul>
+    <div class="mobile-menu-toggle" onclick="toggleMenu()">
+      <i class="bi bi-list"></i>
+    </div>
 
     <ul class="menu-icons">
       <li onclick="toggleAuthModal()"><i class="bi bi-person"></i></li>
@@ -97,18 +100,18 @@
 <div id="profileModal" class="profile-modal">
   <div class="profile-content">
       <div class="profile-header">
-          <h2><i class="bi bi-person-circle"></i> Hesabım</h2>
+          <h5><i class="bi bi-person-circle"></i> Hesabım</h5>
           <i class="bi bi-x" onclick="toggleProfileModal()"></i>
       </div>
       
       <div class="profile-tabs">
-          <button class="profile-tab active" data-tab="userInfo">
+          <button class="profile-tab active" data-tab="userInfo" >
               <i class="bi bi-person"></i> Kullanıcı Bilgilerim
           </button>
           <button class="profile-tab" data-tab="addresses">
               <i class="bi bi-geo-alt"></i> Adreslerim
           </button>
-          <button class="profile-tab" data-tab="orders">
+          <button class="profile-tab" data-tab="orders" onclick="goToCart()">
               <i class="bi bi-bag"></i> Siparişlerim
           </button>
       </div>
@@ -125,7 +128,7 @@
       
       <div class="profile-tab-content" id="addressesContent" style="display:none;">
           <div class="addresses-list">
-              <h3>Kayıtlı Adresler</h3>
+              <h6>Kayıtlı Adresler</h6>
               <div id="addressList">
                  
               </div>
@@ -136,18 +139,7 @@
       </div>
 
      
-      <div class="profile-tab-content" id="ordersContent" style="display:none;">
-          <div class="orders-list">
-              <h3>Geçmiş Siparişler</h3>
-              <div id="ordersList">
-                 
-                  <p>Henüz bir siparişiniz bulunmamaktadır.</p>
-              </div>
-              <button class="btn-go-to-cart" onclick="goToCart()">
-                  <i class="bi bi-cart"></i> Sepete Git
-              </button>
-          </div>
-      </div>
+      
   </div>
 </div>
   </section>
