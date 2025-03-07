@@ -1,9 +1,9 @@
 let bookList = [], 
-    cartList = [];
-
+    cartList = [],
+    users = [],
+    currentUser = null;
 
 let searchModal, authModal, profileModal, personIcon, cartModal;
-
 
 const toggleModal = () => {
     cartModal.classList.toggle("active");
@@ -12,30 +12,24 @@ const toggleModal = () => {
 function toggleMenu() {
     const menu = document.querySelector('.menu');
     menu.classList.toggle('show');
-  }
-
-  
-
-  
-
-
+}
 
 function initializeFilterScroll() {
-  const filter = document.querySelector('.filter');
-  if (window.innerWidth <= 768) {
-    
-    const filterWidth = filter.scrollWidth;
-    const containerWidth = filter.clientWidth;
-    
-    if (filterWidth > containerWidth) {
-      const scrollPosition = (filterWidth - containerWidth) / 2;
-      filter.scrollLeft = scrollPosition;
+    const filter = document.querySelector('.filter');
+    if (window.innerWidth <= 768) {
+        const filterWidth = filter.scrollWidth;
+        const containerWidth = filter.clientWidth;
+        
+        if (filterWidth > containerWidth) {
+            const scrollPosition = (filterWidth - containerWidth) / 2;
+            filter.scrollLeft = scrollPosition;
+        }
     }
-  }
 }
 
 window.addEventListener('load', initializeFilterScroll);
 window.addEventListener('resize', initializeFilterScroll);
+
 const getBooks = async () => {
     try {
         const res = await fetch("./products.json");
@@ -48,7 +42,6 @@ const getBooks = async () => {
     }
 };
 
-
 const createBookStars = (starRate) => {
     let starRateHtml = "";
     for (let i = 1; i <= 5; i++) {
@@ -58,7 +51,6 @@ const createBookStars = (starRate) => {
     }
     return starRateHtml;
 };
-
 
 const createBookItemsHtml = (filteredBooks) => {
     const bookListEl = document.querySelector(".book-list");
@@ -89,17 +81,15 @@ const createBookItemsHtml = (filteredBooks) => {
     `).join("");
 };
 
-
 const BOOK_TYPES = {
-    All: "Tümü",
-    SelfHelp: "Kişisel Gelişim",
-    Literature: "Edebiyat",
-    Science: "Bilim",
-    FINANCE: "Ekonomi",
-    Kids: "Çocuk",
-    History: "Tarih"
+    All: "All",
+    SelfHelp: "Self Help",
+    Literature: "Literature",
+    Science: "Science",
+    FINANCE: "Finance",
+    Kids: "Kids",
+    History: "History"
 };
-
 
 const createBookTypesHtml = () => {
     const filterEl = document.querySelector(".filter");
@@ -111,7 +101,6 @@ const createBookTypesHtml = () => {
     `).join("");
 };
 
-
 const filterBooks = (filterEl) => {
     document.querySelectorAll(".filter li").forEach(el => el.classList.remove("active"));
     filterEl.classList.add("active");
@@ -119,7 +108,6 @@ const filterBooks = (filterEl) => {
     let filteredBooks = bookType === "All" ? bookList : bookList.filter(book => book.type === bookType);
     createBookItemsHtml(filteredBooks);
 };
-
 
 const listCartItems = () => {
     localStorage.setItem("cartList", JSON.stringify(cartList));
@@ -152,7 +140,6 @@ const listCartItems = () => {
     totalPriceEl.innerHTML = totalPrice > 0 ? "Total: " + totalPrice.toFixed(2) + "$" : null;
 };
 
-
 const addBookToCart = (bookId) => {
     const foundBook = bookList.find(book => book.id == bookId);
     if (!foundBook) return;
@@ -160,13 +147,11 @@ const addBookToCart = (bookId) => {
     const cartIndex = cartList.findIndex(cart => cart.product.id == bookId);
     
     if (cartIndex === -1) {
-        
         const addedItem = { quantity: 1, product: foundBook };
         cartList.push(addedItem);
         listCartItems();
         toastr.success("Book Added To Cart");
     } else {
-        
         if (cartList[cartIndex].quantity < cartList[cartIndex].product.stock) {
             cartList[cartIndex].quantity += 1;
             listCartItems();
@@ -176,7 +161,6 @@ const addBookToCart = (bookId) => {
         }
     }
 };
-
 
 const decreaseItemToCart = (bookId) => {
     const foundIndex = cartList.findIndex(cart => cart.product.id == bookId);
@@ -190,7 +174,6 @@ const decreaseItemToCart = (bookId) => {
     }
 };
 
-
 const increaseItemToCart = (bookId) => {
     const foundIndex = cartList.findIndex(cart => cart.product.id == bookId);
     if (foundIndex === -1) return;
@@ -203,7 +186,6 @@ const increaseItemToCart = (bookId) => {
     }
 };
 
-
 const removeItemToCart = (bookId) => {
     const foundIndex = cartList.findIndex(cart => cart.product.id == bookId);
     if (foundIndex !== -1) {
@@ -211,7 +193,6 @@ const removeItemToCart = (bookId) => {
     }
     listCartItems();
 };
-
 
 const searchBooks = () => {
     const searchInput = document.getElementById('searchInput');
@@ -234,11 +215,9 @@ const searchBooks = () => {
     searchInput.value = '';
 };
 
-
 const handleSearch = () => {
     searchModal.classList.toggle('show');
 };
-
 
 const toggleAuthModal = () => {
     if (profileModal.classList.contains('show')) {
@@ -247,11 +226,9 @@ const toggleAuthModal = () => {
     
     authModal.classList.toggle('show');
     
-    
     document.getElementById('loginError').textContent = '';
     document.getElementById('registerError').textContent = '';
 };
-
 
 const register = () => {
     const name = document.getElementById('registerName').value;
@@ -260,49 +237,47 @@ const register = () => {
     const confirmPassword = document.getElementById('confirmPassword').value;
     const errorEl = document.getElementById('registerError');
 
-    
     if (!name || !email || !password || !confirmPassword) {
-        errorEl.textContent = 'Tüm alanları doldurunuz.';
+        errorEl.textContent = 'Please fill all fields.';
         return;
     }
 
-    
     if (password !== confirmPassword) {
-        errorEl.textContent = 'Şifreler eşleşmiyor.';
+        errorEl.textContent = 'Passwords do not match.';
         return;
     }
 
-    
     const emailExists = users.some(user => user.email === email);
     if (emailExists) {
-        errorEl.textContent = 'Bu e-posta zaten kayıtlı.';
+        errorEl.textContent = 'This email is already registered.';
         return;
     }
 
-    
     const newUser = { name, email, password };
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     
-    toastr.success('Kayıt başarılı. Giriş yapabilirsiniz.');
+    // Form alanlarını temizle
+    document.getElementById('registerName').value = '';
+    document.getElementById('registerEmail').value = '';
+    document.getElementById('registerPassword').value = '';
+    document.getElementById('confirmPassword').value = '';
     
+    toastr.success('Registration successful. You can now log in.');
     
     document.querySelector('.auth-tab[data-tab="login"]').click();
 };
-
 
 const login = () => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const errorEl = document.getElementById('loginError');
 
-    
     if (!email || !password) {
-        errorEl.textContent = 'E-posta ve şifre gereklidir.';
+        errorEl.textContent = 'Email and password are required.';
         return;
     }
 
-    
     const user = users.find(u => u.email === email && u.password === password);
     
     if (user) {
@@ -319,15 +294,13 @@ const login = () => {
     }
 };
 
-
 const logout = () => {
     currentUser = null;
     localStorage.removeItem('currentUser');
     
-    toastr.info('Exit has been made.');
+    toastr.info('Logged out successfully.');
     updateProfileMenuVisibility();
 };
-
 
 const toggleProfileModal = () => {
     if (authModal.classList.contains('show')) {
@@ -337,17 +310,26 @@ const toggleProfileModal = () => {
     profileModal.classList.toggle('show');
     
     if (profileModal.classList.contains('show') && currentUser) {
-        document.getElementById('profileName').textContent = currentUser.name;
-        document.getElementById('profileEmail').textContent = currentUser.email;
+        console.log("Current user:", currentUser);
+        console.log("Profile name element:", document.getElementById('profileName'));
+        console.log("Profile email element:", document.getElementById('profileEmail'));
+        
+        if (document.getElementById('profileName') && document.getElementById('profileEmail')) {
+            document.getElementById('profileName').textContent = currentUser.name;
+            document.getElementById('profileEmail').textContent = currentUser.email;
+        } else {
+            console.error("Profile elements not found in DOM");
+        }
+    } else {
+        console.log("Profile modal not shown or currentUser is null:", 
+                   { modalShown: profileModal.classList.contains('show'), currentUser });
     }
 };
-
 
 const goToCart = () => {
     toggleProfileModal(); 
     toggleModal(); 
 };
-
 
 const updateProfileMenuVisibility = () => {
     if (currentUser) {
@@ -361,25 +343,20 @@ const updateProfileMenuVisibility = () => {
     }
 };
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  
     searchModal = document.getElementById('searchModal');
     authModal = document.getElementById('authModal');
     profileModal = document.getElementById('profileModal');
     personIcon = document.querySelector('.bi-person');
     cartModal = document.querySelector(".cart-modal");
     
-    
     users = JSON.parse(localStorage.getItem('users')) || [];
     currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
-    
     
     if (localStorage.getItem("cartList")) {
         cartList = JSON.parse(localStorage.getItem("cartList"));
         listCartItems();
     }
-    
     
     cartModal.addEventListener("click", (e) => {
         if (e.target.classList.contains("cart-modal")) {
@@ -407,7 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    
     document.querySelectorAll('.auth-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
@@ -421,7 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-   
     document.querySelectorAll('.profile-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
@@ -435,25 +410,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    
     const btnAddAddress = document.querySelector('.btn-add-address');
     if (btnAddAddress) {
         btnAddAddress.addEventListener('click', () => {
-            toastr.info('under construction');
+            toastr.info('This feature is under construction');
         });
     }
     
-   
     const btnEdit = document.querySelector('.btn-edit');
     if (btnEdit) {
         btnEdit.addEventListener('click', () => {
-            toastr.info('under construction');
+            toastr.info('This feature is under construction');
         });
     }
     
-    
     updateProfileMenuVisibility();
-    
     
     getBooks();
 });

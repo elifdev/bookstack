@@ -47,6 +47,10 @@
 
 }
 
+.mobile-menu-toggle {
+  display: none; 
+}
+
 .menu li,
 .menu-icons li {
     margin: 0 10px;
@@ -735,6 +739,8 @@
       margin: 0 -30px 15px 0;
     }
     
+  
+
     .menu-icons {
       margin-left: 0;
     }
@@ -829,7 +835,6 @@
     
     
   }
-  
 
   @media (max-width: 576px) {
     .navbar h2 {
