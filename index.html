@@ -41,25 +41,25 @@
   <div id="authModal" class="auth-modal">
     <div class="auth-content">
         <div class="auth-header">
-            <button class="auth-tab active" data-tab="login">Giriş Yap</button>
-            <button class="auth-tab" data-tab="register">Kayıt Ol</button>
+            <button class="auth-tab active" data-tab="login">LOGIN</button>
+            <button class="auth-tab" data-tab="register">SIGN UP </button>
         </div>
         
        
         <div class="auth-form" id="loginForm">
             <input type="email" placeholder="E-posta" id="loginEmail" required>
             <input type="password" placeholder="Şifre" id="loginPassword" required>
-            <button onclick="login()">Giriş Yap</button>
+            <button onclick="login()">LOGIN</button>
             <p class="auth-error" id="loginError"></p>
         </div>
         
        
         <div class="auth-form" id="registerForm" style="display:none;">
-            <input type="text" placeholder="Ad Soyad" id="registerName" required>
-            <input type="email" placeholder="E-posta" id="registerEmail" required>
-            <input type="password" placeholder="Şifre" id="registerPassword" required>
-            <input type="password" placeholder="Şifreyi Tekrarla" id="confirmPassword" required>
-            <button onclick="register()">Kayıt Ol</button>
+            <input type="text" placeholder="Name" id="registerName" required>
+            <input type="email" placeholder="Email" id="registerEmail" required>
+            <input type="password" placeholder="Password" id="registerPassword" required>
+            <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+            <button onclick="register()">Register</button>
             <p class="auth-error" id="registerError"></p>
         </div>
     </div>
@@ -100,40 +100,40 @@
 <div id="profileModal" class="profile-modal">
   <div class="profile-content">
       <div class="profile-header">
-          <h5><i class="bi bi-person-circle"></i> Hesabım</h5>
+          <h5><i class="bi bi-person-circle"></i> Account</h5>
           <i class="bi bi-x" onclick="toggleProfileModal()"></i>
       </div>
       
       <div class="profile-tabs">
           <button class="profile-tab active" data-tab="userInfo" >
-              <i class="bi bi-person"></i> Kullanıcı Bilgilerim
+              <i class="bi bi-person"></i> Details
           </button>
           <button class="profile-tab" data-tab="addresses">
-              <i class="bi bi-geo-alt"></i> Adreslerim
+              <i class="bi bi-geo-alt"></i> Addresses
           </button>
           <button class="profile-tab" data-tab="orders" onclick="goToCart()">
-              <i class="bi bi-bag"></i> Siparişlerim
+              <i class="bi bi-bag"></i> Orders
           </button>
       </div>
 
      
       <div class="profile-tab-content" id="userInfoContent">
           <div class="user-info-details">
-              <p><strong>Ad Soyad:</strong> <span id="profileName"></span></p>
-              <p><strong>E-posta:</strong> <span id="profileEmail"></span></p>
-              <button class="btn-edit">Bilgileri Düzenle</button>
+              <p><strong>Name Last Name:</strong> <span id="profileName"></span></p>
+              <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+              <button class="btn-edit">Edit Profil</button>
           </div>
       </div>
 
       
       <div class="profile-tab-content" id="addressesContent" style="display:none;">
           <div class="addresses-list">
-              <h6>Kayıtlı Adresler</h6>
+              <h6>Addresses</h6>
               <div id="addressList">
                  
               </div>
               <button class="btn-add-address">
-                  <i class="bi bi-plus"></i> Yeni Adres Ekle
+                  <i class="bi bi-plus"></i> Add New Address
               </button>
           </div>
       </div>
@@ -146,13 +146,13 @@
   <section class="store my-5">
     <div class="filter-bg"></div>
     <ul class="filter">
-      <li class="active">Tümü</li>
-      <li>Kişisel Gelişim</li>
-      <li>Edebiyat</li>
-      <li>Bilim</li>
-      <li>Ekonomi</li>
-      <li>Çocuk</li>
-      <li>Tarih</li>
+      <li class="active">All</li>
+      <li>Self Help</li>
+      <li>Literature</li>
+      <li>Science</li>
+      <li>Finance</li>
+      <li>Kids</li>
+      <li>History</li>
     </ul>
 
     <div class="row book-list ">
